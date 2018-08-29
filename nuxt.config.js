@@ -14,9 +14,12 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.2.0/css/all.css'}
     ]
   },
+  css: [
+    '@/assets/scss/app.scss' // use our build, as entered via app.scss
+  ],
   modules: [
     '@nuxtjs/axios',
-    ['bootstrap-vue/nuxt', { css: false }],
+    ['@nuxtjs/bootstrap-vue', { css: false }],
     ['nuxt-validate', {
       lang: 'id'
       // regular vee-validate options 
