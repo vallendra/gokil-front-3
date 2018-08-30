@@ -8,7 +8,7 @@
             <b-nav-item href="/">Beranda</b-nav-item>
             <b-nav-item href="#">Tentang</b-nav-item>
             <b-nav-item href="#">Kontak</b-nav-item>
-            <a class="btn btn-outline-primary" href="/register">MASUK</a>
+            <a class="btn btn-outline-primary" href="/login">MASUK</a>
             </b-navbar-nav>
         </b-collapse>
         </b-navbar>
