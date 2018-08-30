@@ -19,11 +19,13 @@
                     </b-alert>
                     <div class="form-group">
                         <label>Username</label>
-                        <input name="username" v-model="email" class="form-control" placeholder="Masukkan username">
+                        <input name="username" type="text" v-model="email" class="form-control" placeholder="Masukkan username">
                     </div>
                     <div class="form-group">
                        <label>Password</label>
-                      <input name="password" class="form-control"  v-model="password" placeholder="Masukkan password">
+                      <input name="password" 
+                      
+                       class="form-control"  v-model="password" placeholder="Masukkan password" type="password">
                     </div>    
                     <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="login">MASUK</button>
                   </div>

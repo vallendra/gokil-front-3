@@ -55,8 +55,7 @@
 </template>
 
 <script>
-
 export default {
-  layout: homepage
+  layout: 'homepage',
 }
 </script>

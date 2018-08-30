@@ -1,0 +1,29 @@
+[33mcommit 010b053f26500a06d79fb66419c3285d3acecc5f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/development_signin[m[33m, [m[1;31morigin/development[m[33m, [m[1;32mdevelopment[m[33m)[m
+Author: Kyky Farly Vallendra <kykyfarly@ymail.com>
+Date:   Thu Aug 30 18:44:22 2018 +0700
+
+    Changing index, changing some layouts
+
+[33mcommit 7639b3a142d23ca8637c3b0c8b333babb6fc7950[m
+Author: Kyky Farly Vallendra <kykyfarly@ymail.com>
+Date:   Thu Aug 30 18:03:51 2018 +0700
+
+    Add sign-in page and additional modules for Bootstrap
+
+[33mcommit 379c450c9090c91c4747b187a9b3e2718448d214[m[33m ([m[1;32mdev_signin[m[33m)[m
+Author: Kyky Farly Vallendra <kykyfarly@ymail.com>
+Date:   Wed Aug 29 20:38:22 2018 +0700
+
+    Add navbar, image assets, and addtional modules and configs to run Bootstrap
+
+[33mcommit 5c1a97cb0ecfcb74735112e816874401dd0abd79[m
+Author: Kyky Farly Vallendra <kykyfarly@ymail.com>
+Date:   Wed Aug 29 19:58:36 2018 +0700
+
+    Install Bootstrap-vue, Nuxt-validate, Axios. Configure Axios port and host.
+
+[33mcommit a0d2c76c9c875e5665dfd65a11688874ec856384[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: aldk98 <aldrian.kwantawijaya@binus.ac.id>
+Date:   Wed Aug 29 19:13:40 2018 +0700
+
+    Initial Commit
