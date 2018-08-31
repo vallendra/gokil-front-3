@@ -1,5 +1,6 @@
 <template>
     <div>
+        <navbar-main />
         <!-- Text above the card -->
         <div class="container text-center">
             <img class="icon" src="../assets/images/accident.png" height="75">
@@ -14,7 +15,7 @@
                      <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="logout">KELUAR</button>
                   </div>
                   <div v-else>
-                    <b-alert show dismissible v-if="error">
+                    <b-alert show danger v-show="error !=null">
                         {{error}}
                     </b-alert>
                     <div class="form-group">
@@ -23,19 +24,21 @@
                     </div>
                     <div class="form-group">
                        <label>Password</label>
-                      <input name="password" 
-                      
-                       class="form-control"  v-model="password" placeholder="Masukkan password" type="password">
+                      <input name="password" class="form-control"  v-model="password" placeholder="Masukkan password" type="password">
                     </div>    
                     <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="login">MASUK</button>
                   </div>
                 </div>
+            </div>
+            <div class="text-center info">
+              <a href="/signup"><small>Belum punya akun?</small></a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import NavbarMain from '~/components/NavbarMain'
 export default {
   data () {
     return {
@@ -44,7 +47,9 @@ export default {
       error: null
     }
   },
-  layout: 'navbar',
+  components: {
+      NavbarMain
+  },
   methods: {
     login: function () {
       this.$auth.login({

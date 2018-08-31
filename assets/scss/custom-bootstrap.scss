@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
+.main-wrapper {
+  height: 95vh;  
+}
+
+.nav {
+  height: 5vh;
+}
+
+.section {
+  height: 100%;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 $orange: #fe8d3b;
 $btn-font-weight: 700;
 $black: #333D3E;
@@ -94,6 +117,9 @@ nav {
 
 .bg-orange{
   background-color: $orange!important;
+}
+.bg-black{
+  background-color: $black!important;
 }
 
 .padding-bottom {

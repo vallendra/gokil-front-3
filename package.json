@@ -34,5 +34,15 @@
     "node-sass": "^4.9.3",
     "precss": "^3.1.2",
     "sass-loader": "^7.1.0"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 45",
+    "Firefox ESR",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ]
 }
