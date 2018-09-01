@@ -33,7 +33,9 @@
                                 <button @click.prevent="next()" v-on:click="firststep = !firststep" class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit">LANJUT</button>
                             </div>
                         </div>
+                    </transition>
 
+                    <transition name="fade" mode="out-in">
                          <div v-if="!firststep">
                             <b-alert v-show="error!=null">
                                 {{error}}

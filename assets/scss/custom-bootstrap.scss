@@ -253,3 +253,76 @@ nav {
 #myFooter .twitter:hover {
     color: #00aced;
 }
+
+.behind {
+  z-index: -1;
+}
+
+
+.pulse-loader:not(:required) {
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  -moz-animation: pulse-loader 0.7s linear infinite alternate;
+  -webkit-animation: pulse-loader 0.7s linear infinite alternate;
+  animation: pulse-loader 0.7s linear infinite alternate;
+  border: 2px solid #e67e22;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  text-indent: 50px;
+}
+
+@-moz-keyframes pulse-loader {
+  0% {
+    -moz-box-shadow: #e67e22 0 0 0px 20px;
+    box-shadow: #e67e22 0 0 0px 20px;
+  }
+  40% {
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  100% {
+    -moz-box-shadow: #e67e22 0 0 0px 25px inset;
+    box-shadow: #e67e22 0 0 0px 25px inset;
+  }
+}
+@-webkit-keyframes pulse-loader {
+  0% {
+    -webkit-box-shadow: #e67e22 0 0 0px 20px;
+    box-shadow: #e67e22 0 0 0px 20px;
+  }
+  40% {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  100% {
+    -webkit-box-shadow: #e67e22 0 0 0px 25px inset;
+    box-shadow: #e67e22 0 0 0px 25px inset;
+  }
+}
+@keyframes pulse-loader {
+  0% {
+    -moz-box-shadow: #e67e22 0 0 0px 20px;
+    -webkit-box-shadow: #e67e22 0 0 0px 20px;
+    box-shadow: #e67e22 0 0 0px 20px;
+  }
+  40% {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  100% {
+    -moz-box-shadow: #e67e22 0 0 0px 25px inset;
+    -webkit-box-shadow: #e67e22 0 0 0px 25px inset;
+    box-shadow: #e67e22 0 0 0px 25px inset;
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}

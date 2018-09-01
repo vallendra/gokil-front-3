@@ -13,7 +13,7 @@
             <b-container class="bg-blue rounded text-white btn-space shadow-up">
                 <div class="d-flex justify-content-around">
                     <div>
-                        <div><h5>Harga</h5></div>
+                        <div><h5>Harga</h5></div> 
                         <div><h5>Rp. 174.000</h5></div>
                     </div>
                     <div>
@@ -23,7 +23,7 @@
                 </div>
             </b-container>                  
         </form>
-        <button class="btn btn-lg btn-primary btn-block icon text-uppercase btn-space" @click="makeRoute()">PESAN</button>
+        <button class="btn btn-lg btn-primary btn-block icon text-uppercase btn-space" @click="makeOrder">PESAN</button>
     </b-card>
 </template>
 
@@ -56,6 +56,13 @@ export default {
       this.$store.commit('setEnd', this.endPlace)
       this.makeRoute()
     },
+    makeOrder: function() {
+        if (this.startPlace == null || this.endPlace == null) {
+            alert("Isi dulu tujuan destinasinya ya :)") 
+        } else {
+            this.$store.commit('nextStep');
+        }
+    }
     
   }
 }

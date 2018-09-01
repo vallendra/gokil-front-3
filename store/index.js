@@ -5,8 +5,15 @@ const createStore = () => {
     state: {
       startPoint: null,
       endPoint:null,
+      orderStep: 1,
     },
     mutations: {
+      nextStep (state) {
+        state.orderStep++;
+      },
+      prevStep (state) {
+        state.orderStep--;
+      },
       setStart (state, place) {
         state.startPoint = null
         state.startPoint = place
