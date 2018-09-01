@@ -23,13 +23,13 @@ module.exports = {
     ['@nuxtjs/bootstrap-vue', { css: false }],
     ['nuxt-validate', {
       lang: 'id'
-      // regular vee-validate options 
-    }]
+    }],
   ],
   axios: {
-    host: 'localhost',
+    base: 'localhost',
     port: 3000,
     prefix: '/api'
+    // baseURL: 'https://stormy-lowlands-13581.herokuapp.com/api/',
   },
   auth: {
     strategies: {
@@ -55,6 +55,10 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: [
+      'babel-polyfill',
+      'vue2-google-maps'
+    ],
     /*
     ** Run ESLint on save
     */
@@ -67,7 +71,19 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
-  }
+      if (!isClient) {
+        // This instructs Webpack to include `vue2-google-maps`'s Vue files
+        // for server-side rendering
+        config.externals.splice(0, 0, function (context, request, callback) {
+          if (/^vue2-google-maps($|\/)/.test(request)) {
+            callback(null, false)
+          } else {
+            callback()
+          }
+        })
+      }
+    },
+  },
+  plugins: ['~/plugins/vue2-google-maps']
 }
 

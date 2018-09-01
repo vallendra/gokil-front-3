@@ -2,17 +2,17 @@
     <div>
         <navbar-user/>
         <b-row no-gutters class="main-wrapper">
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-5 col-md-12 col-sm-12">
                 <!-- Validation on roles to show order option -->
-                <div class="section" v-if="$auth.$state.user.email == 'wq@wq.vom'">
-                    <order-driver />
-                </div>
-                <div class="section" v-if="$auth.$state.user.email == 'customer'">
+                <div class="section" v-if="$auth.$state.user.email == 'test@example.com'">
                     <order-customer />
                 </div>
+                <div class="section" v-if="$auth.$state.user.email == 'driver'">
+                    <order-driver />
+                </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <maps />
+            <div class="col-lg-7 col-md-12 col-sm-12">
+                <maps ref="map" />
             </div>
         </b-row>
     </div>
@@ -32,5 +32,8 @@ export default {
         Maps,
         NavbarUser
     },
+    method:{
+      
+    }
 }
 </script>

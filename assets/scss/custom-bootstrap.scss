@@ -28,7 +28,28 @@ $btn-font-weight: 700;
 $black: #333D3E;
 $sand-dollar: #d5d6d2;
 $wood-veneer: #756867;
+$blue: #1970ff;
+$grey: #475255;
 
+.bg-grey {
+  background-color: $grey!important;
+}
+.bg-blue {
+  background-color: $blue!important;
+}
+
+.input-group{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.btn-space {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.text-white {
+  color: white;
+}
 
 :root {
   --input-padding-x: 1.5rem;
@@ -76,9 +97,9 @@ body {
 }
 
 .shadow-up {
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 10px 0px $black;
+  -moz-box-shadow: 0px 0px 10px 0px $black;
+  box-shadow: 0px 0px 10px 0px $black;
 }
 
 .thick {
@@ -167,7 +188,7 @@ nav {
 
 .icon {
   margin-top: 3%;
-  margin-down: 5px;
+  margin-bottom: 5px;
 }
 
 
