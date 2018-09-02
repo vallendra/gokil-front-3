@@ -12,7 +12,7 @@
                         <div class="container text-center">
                             <small>Tak kenal maka tak sayang</small>
                         </div>
-                        <div class="social-icons">
+                        <div class="social-icons d-flex justify-content-around">
                             <a href="#" class="twitter"><i class="fab fa-twitter fa-lg"></i></a>
                             <a href="#" class="line"><i class="fab fa-line fa-lg"></i></a>
                             <a href="#" class="google"><i class="fab fa-instagram fa-lg"></i></a>

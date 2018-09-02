@@ -10,7 +10,7 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card shadow">
                 <div class="card-body">
-                    <form id="register" @submit.prevent="register" method="post">
+                    <form id="register" @submit.prevent="validateBeforeSubmit" method="post">
                     <transition name="fade" mode="out-in">
                         <!-- Step 1 -->
                         <div v-if="firststep" class="text-center">
@@ -19,25 +19,30 @@
                                 buttons
                                 button-variant="outline-primary"
                                 size="lg"
+                                name="selectRole"
+                                v-model="userTypeID"
+                                data-vv-as="Peran"
+                                v-validate="'required'" 
+                                class="control"
                                 >
-                                <b-form-radio value="driver">
+                                <b-form-radio value="2">
                                     <i class='fas fa-motorcycle fa-5x" fa-5x'> </i> <br/>
                                         MITRA
                                 </b-form-radio>
-                                <b-form-radio value="customer">
+                                <b-form-radio value="1">
                                     <i class="fa fa-user fa-5x"></i><br/>
                                     PENUMPANG
                                 </b-form-radio>
                             </b-form-radio-group>
                             <div class="form-group padding-top">
-                                <button @click.prevent="next()" v-on:click="firststep = !firststep" class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit">LANJUT</button>
+                                <button @click.prevent="next()" class="btn btn-lg btn-primary btn-block icon text-uppercase" :disabled="userTypeID == null" type="submit">LANJUT</button>
                             </div>
                         </div>
                     </transition>
 
                     <transition name="fade" mode="out-in">
                          <div v-if="!firststep">
-                            <b-alert v-show="error!=null">
+                            <b-alert show danger v-show="error !=null">
                                 {{error}}
                             </b-alert>
                          <div class="form-group">
@@ -60,7 +65,7 @@
                         
                         <div class="form-group">
                         <label for="inputConfirmPassword">Konfirmasi password</label>
-                        <input name="pw_confirm" v-validate="'required|confirmed:password'" type="password" placeholder="Masukkan password lagi" :class="{'input': true, 'is-invalid': errors.has('pw_confirm')}" class="form-control" data-vv-as="Konfirmasi Password" >
+                        <input name="pw_confirm" v-validate="'required|confirmed:password'" type="password" placeholder="Masukkan password lagi" :class="{'input': true, 'is-invalid': errors.has('pw_confirm')}" class="form-control" data-vv-as="Konfirmasi password" >
                         <small v-show="errors.has('pw_confirm')" class="text-danger">{{ errors.first('pw_confirm') }}</small> 
                         </div>
 
@@ -87,6 +92,8 @@ export default {
         return {
             firststep: true,
             username:null,
+            name:null,
+            userTypeID: null,
             email:null,
             password:null,
             error:null
@@ -97,18 +104,23 @@ export default {
       },
 	  methods: {
         prev() {
-            firststep: true;
+            this.firststep = true;
         },
         next() {
-            firststep: false;
+            this.$validator.validateAll().then((result) => {
+                if (result) {
+                    this.firststep = false;
+                }
+            });
         },
         async register() {
-            this.$validator.validateAll()
             try {
                 await this.$axios.post('/users', {
                     user: {
+                        username: this.username,
                         email: this.email,
-                        password: this.password
+                        password: this.password,
+                        userTypeID: this.userTypeID,
                     }
                     
                 })
@@ -116,17 +128,16 @@ export default {
                 alert('Pendaftaran berhasil!')
                 } catch (e) {
                     this.error = e.response.data.message
+                    alert(this.error)
                 }
         },
-        // validateBeforeSubmit() {
-	    //   this.$validator.validateAll().then((result) => {
-	    //     if (result) {
-	    //       register();
-	    //       alert('Form Submitted!');
-	    //       return;
-	    //     }
-	    //   });
-	    // },
+        validateBeforeSubmit() {
+	      this.$validator.validateAll().then((result) => {
+	        if (result) {
+	          this.register();
+	        }
+	      });
+	    },
 	    
       },
 };

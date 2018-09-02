@@ -222,6 +222,9 @@ nav {
 
 #myFooter .logo{
     margin-top: 30px;
+    float: center;
+    text-align: center;
+    
 }
 
 
@@ -238,7 +241,6 @@ nav {
 
 #myFooter .social-icons {
     float: center;
-    justify-content: space-around;
     text-align: center;
 }
 
@@ -271,7 +273,6 @@ nav {
   -webkit-border-radius: 50%;
   border-radius: 50%;
   overflow: hidden;
-  text-indent: 50px;
 }
 
 @-moz-keyframes pulse-loader {

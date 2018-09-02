@@ -3,7 +3,7 @@
     <GmapMap
       ref="mapDashboard"
       :center="center"
-      :zoom="12"
+      :zoom="16"
       class="section"
       style="width:100%;  height:95vh;"
     >
@@ -55,10 +55,10 @@ export default {
         if(this.directionsDisplay) {
           this.directionsDisplay.setMap(null)
         }
+        // Making directions
         this.directionsService = new google.maps.DirectionsService()
         this.directionsDisplay = new google.maps.DirectionsRenderer()
         this.directionsDisplay.setMap(this.$refs.mapDashboard.$mapObject)
-        
         var vm = this
         vm.directionsService.route({
             origin:  new google.maps.LatLng(this.$store.state.startPoint.geometry.location.lat(),this.$store.state.startPoint.geometry.location.lng()),
@@ -66,9 +66,9 @@ export default {
             travelMode: 'DRIVING'
         }, function (response, status) {
             if (status === 'OK') {
-            vm.directionsDisplay.setDirections(response)
+              vm.directionsDisplay.setDirections(response)
             } else {
-            console.log('Directions request failed due to ' + status)
+              console.log('Directions request failed due to ' + status)
             }
         })
         },
