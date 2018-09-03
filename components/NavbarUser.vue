@@ -7,7 +7,7 @@
                      <template slot="button-content">
                     <b-button variant="primary"> Halo, {{$auth.$state.user.username}} | <i class="fas fa-wallet"></i> Rp0000</b-button>
                     </template>
-                    <b-dropdown-item href="#">Ubah profil</b-dropdown-item>
+                    <b-dropdown-item href="/profile">Ubah profil</b-dropdown-item>
                     <b-dropdown-item href="#">Riwayat Perjalanan</b-dropdown-item>
                     <b-dropdown-item @click="logout" class="bg-orange"><strong>Keluar</strong></b-dropdown-item>
                 </b-nav-item-dropdown>

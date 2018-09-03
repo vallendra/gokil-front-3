@@ -19,7 +19,7 @@
                         {{error}}
                     </b-alert>
                     <div class="form-group">
-                        <label>Username</label>
+                        <label>Email</label>
                         <input name="email" type="text" v-model="email" class="form-control" placeholder="Masukkan email">
                     </div>
                     <div class="form-group">

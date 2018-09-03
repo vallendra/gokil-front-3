@@ -25,15 +25,11 @@ import Maps from '~/components/Maps'
 import NavbarUser from '~/components/NavbarUser'
 
 export default {
-    middleware: 'auth',
+    layout: 'user',
     components: {
         OrderDriver,
         OrderCustomer,
         Maps,
-        NavbarUser
-    },
-    method:{
-      
     }
 }
 </script>
