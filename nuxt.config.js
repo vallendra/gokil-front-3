@@ -35,13 +35,13 @@ module.exports = {
           login:  { url: '/users/sign_in' },
           logout: { url: '/users/sign_out', method: 'delete' },
           user:   { url: '/users/current' }
-        },
-      },
-      redirect: {
-        login: '/login',
-        logout: '/',
-        home: '/dashboard'
+        }
       }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/dashboard'
     }
   },
   /*
