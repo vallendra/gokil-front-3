@@ -26,10 +26,7 @@ module.exports = {
     }],
   ],
   axios: {
-    base: 'localhost',
-    port: 3000,
-    prefix: '/api'
-    // baseURL: 'https://stormy-lowlands-13581.herokuapp.com/api/',
+    baseURL: 'https://gokil-backend-kyky1.herokuapp.com/api/',
   },
   auth: {
     strategies: {

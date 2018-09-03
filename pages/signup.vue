@@ -69,6 +69,10 @@
                         <small v-show="errors.has('pw_confirm')" class="text-danger">{{ errors.first('pw_confirm') }}</small> 
                         </div>
 
+                        <div>
+                            <button class="btn btn-secondary icon text-uppercase" @click="prev()">Sebelumnya</button>
+                        </div>
+
                         <div class="form-group padding-top">
                         <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit">DAFTAR</button>
                         </div>
