@@ -3,9 +3,7 @@
         <h2 class="text-white content">Mau kemana sekarang?</h2>
         <form>
             <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="fas fa-map-marker-alt fa-2x"></i>
-                </span>
+                <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
                 <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan titik penjemputan"> </GmapAutocomplete>
             </div> 
             <div class="input-group">
@@ -49,8 +47,9 @@ export default {
         }
     },
     startPoint(place) {
-        this.startPlace = place
+      this.startPlace = place
       this.$store.commit('setStart', this.startPlace)
+      this.$nuxt.$emit('ADD_START');
       this.makeRoute()
     },
     endPoint(place) {
