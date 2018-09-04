@@ -26,7 +26,9 @@ module.exports = {
     }],
   ],
   axios: {
-    baseURL: 'https://gokil-backend-kyky1.herokuapp.com/api/',
+    base: 'localhost',
+    port: 3000,
+    prefix: '/api'
     },
   auth: {
     strategies: {
