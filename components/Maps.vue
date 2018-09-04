@@ -30,8 +30,8 @@ export default {
   
   mounted: function() {
     this.geolocate();
-    this.$nuxt.$on('ADD_START', data => {
-      this.addMarker();
+    this.$nuxt.$on('ADD_MARKER', data => {
+      this.addMarker(data);
     })
     this.$nuxt.$on('CHANGE_ROUTE', data => {
         this.getRoute();
@@ -39,8 +39,9 @@ export default {
   },
 
    methods: {
-    addMarker: function(){
-        this.currentPlace = this.$store.state.startPoint
+    addMarker: function(point){
+        this.markers = []
+        this.currentPlace = point
         var marker = {
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng()
@@ -49,8 +50,9 @@ export default {
          this.center = marker;
     },
     getRoute: function() {
+        this.markers = []
         if(this.directionsDisplay) {
-          this.directionsDisplay.setMap(null)
+          this.directionsDisplay.setMapOnAll(null)
         }
         // Making directions
         this.directionsService = new google.maps.DirectionsService()

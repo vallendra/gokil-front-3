@@ -49,12 +49,13 @@ export default {
     startPoint(place) {
       this.startPlace = place
       this.$store.commit('setStart', this.startPlace)
-      this.$nuxt.$emit('ADD_START');
+      this.$nuxt.$emit('ADD_MARKER', this.startPlace)
       this.makeRoute()
     },
     endPoint(place) {
       this.endPlace = place
       this.$store.commit('setEnd', this.endPlace)
+      this.$nuxt.$emit('ADD_MARKER', this.endPlace)
       this.makeRoute()
     },
     makeOrder: function() {
