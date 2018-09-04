@@ -20,13 +20,16 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    ['@nuxtjs/moment', ['id']],
     ['@nuxtjs/bootstrap-vue', { css: false }],
     ['nuxt-validate', {
       lang: 'id'
     }],
   ],
   axios: {
-    baseURL: 'https://gokil-backend-kyky1.herokuapp.com/api/',
+    base: 'localhost',
+    port: 3000,
+    prefix: '/api'
     },
   auth: {
     strategies: {
@@ -81,6 +84,9 @@ module.exports = {
       }
     },
   },
-  plugins: ['~/plugins/vue2-google-maps']
+  plugins: [
+    '~/plugins/vue2-google-maps',
+    { src: '~/plugins/currency', ssr: false }
+  ]
 }
 
