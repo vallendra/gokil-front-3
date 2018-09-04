@@ -20,7 +20,7 @@
                     </b-alert>
                     <div class="form-group">
                         <label>Username</label>
-                        <input name="username" type="text" v-model="email" class="form-control" placeholder="Masukkan username">
+                        <input name="email" type="text" v-model="email" class="form-control" placeholder="Masukkan email">
                     </div>
                     <div class="form-group">
                        <label>Password</label>

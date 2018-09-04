@@ -26,8 +26,10 @@ module.exports = {
     }],
   ],
   axios: {
-    baseURL: 'https://gokil-backend-kyky1.herokuapp.com/api/',
-  },
+    base: 'localhost',
+    port: 3000,
+    prefix: '/api'
+    },
   auth: {
     strategies: {
       local: {
@@ -35,13 +37,13 @@ module.exports = {
           login:  { url: '/users/sign_in' },
           logout: { url: '/users/sign_out', method: 'delete' },
           user:   { url: '/users/current' }
-        },
-      },
-      redirect: {
-        login: '/login',
-        logout: '/',
-        home: '/dashboard'
+        }
       }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/dashboard'
     }
   },
   /*
