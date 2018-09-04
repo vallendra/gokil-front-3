@@ -45,6 +45,13 @@
                             <b-alert show danger v-show="error !=null">
                                 {{error}}
                             </b-alert>
+
+                        <div class="form-group">
+                        <label for="inputName">Nama Lengkap</label>
+                        <input name="name" v-model="name" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('name') }" type="text" placeholder="Masukkan nama lengkap" class="form-control" data-vv-as="Nama">
+                        <small v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</small>   
+                        </div>
+
                          <div class="form-group">
                         <label for="inputUsername">Username</label>
                         <input name="username" v-model="username" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('username') }" type="text" placeholder="Masukkan username" class="form-control" data-vv-as="Username">
@@ -117,6 +124,7 @@ export default {
             try {
                 await this.$axios.post('/users', {
                     user: {
+                        name: this.name,
                         username: this.username,
                         email: this.email,
                         password: this.password,
