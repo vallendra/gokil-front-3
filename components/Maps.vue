@@ -31,7 +31,6 @@ export default {
   mounted: function() {
     this.geolocate();
     this.$nuxt.$on('ADD_START', data => {
-      console.log('add marker pengeen dipanggil');
       this.addMarker();
     })
     this.$nuxt.$on('CHANGE_ROUTE', data => {
@@ -40,37 +39,14 @@ export default {
   },
 
    methods: {
-    // receives a place object via the autocomplete component
-    // setPlace(place) {
-    //   this.currentPlace = place;
-    // },
-    // addMarker() {
-    //   if (this.currentPlace) {
-    //     const marker = {
-    //       lat: this.currentPlace.geometry.location.lat(),
-    //       lng: this.currentPlace.geometry.location.lng()
-    //     };
-    //     this.markers.push({ position: marker });
-    //     this.places.push(this.currentPlace);
-    //     this.center = marker;
-    //     this.currentPlace = null;
-    //   }
-    // },
-
     addMarker: function(){
-      console.log('add marker dipanggil');
         this.currentPlace = this.$store.state.startPoint
         var marker = {
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng()
         }
         this.markers.push({ position: marker });
-        // this.places.push(this.currentPlace);
-        // var startMarker =  new google.maps.Marker({position: marker, map: this.$refs.mapDashboard.$mapObject});
-        this.center = marker;
-        // this.currentPlace = null;
-      
-
+         this.center = marker;
     },
     getRoute: function() {
         if(this.directionsDisplay) {

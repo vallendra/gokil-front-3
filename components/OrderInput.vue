@@ -47,8 +47,7 @@ export default {
         }
     },
     startPoint(place) {
-      console.log('startPoint dipanggil');
-        this.startPlace = place
+      this.startPlace = place
       this.$store.commit('setStart', this.startPlace)
       this.$nuxt.$emit('ADD_START');
       this.makeRoute()
