@@ -3,7 +3,9 @@
         <h2 class="text-white content">Mau kemana sekarang?</h2>
         <form>
             <div class="input-group">
-                <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
+                <span class="input-group-addon">
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                </span>
                 <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan titik penjemputan"> </GmapAutocomplete>
             </div> 
             <div class="input-group">
