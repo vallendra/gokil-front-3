@@ -4,12 +4,6 @@
             <h1 class="text-white">Riwayat Perjalanan</h1>
             <b-card class="col-sm-9 col-md-7 col-lg-10 mx-auto bg-grey shadow text-white">
                 <b-card-body>
-                    <!-- <li> -->
-                        <!-- <li v-for="order in orders" :key="order.id">
-                            {{ order }}
-                        </li> -->
-                    <!-- </li> -->
-
                     <table class="table">
                     <thead class="thead-light">
                         <tr>
