@@ -3,7 +3,7 @@
     <gmap-map
       ref="mapDashboard"
       :center="center"
-      :zoom="16"
+      :zoom="19"
       class="section"
       style="width:100%;  height:95vh;"
     >

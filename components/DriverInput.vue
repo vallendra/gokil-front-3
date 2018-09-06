@@ -3,8 +3,12 @@
         <h2 class="text-center mid-content">Siap Cari Duit?</h2>
         <form>
             <div class="input-group">
-                <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
-                <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan titik penjemputan"> </GmapAutocomplete>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> 
+                        <i class="fas fa-map-marker-alt color-orange"></i> 
+                    </span>
+                </div>
+                <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan titik mulai"> </GmapAutocomplete>
             </div>
             <div class="content">
                 <h4>Auto-Bid</h4>
