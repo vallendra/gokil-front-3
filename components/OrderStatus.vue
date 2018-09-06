@@ -2,15 +2,25 @@
     <b-card class="shadow bg-grey text-center">
         <h2 class="text-white content">Berikut Pesanan Kamu</h2>
             <b-card class="bg-white">
+                    <div class="align-items-center">
+                        <div>Nama Driver</div>
+                        <div>+6283876317976</div>
+                        <div class="row">
+                            <b-button><i class="fas fa-phone"></i></b-button>
+                        </div>
+                    </div>
                 <div class="row">
-                    <div>Lorem Ipsum</div>
                     <div class="input-group" >
-                        <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
-                        <b-input disabled placeholder="Value tempat awal"></b-input>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fas fa-map-marker-alt color-orange"></i> </span>
+                        </div>
+                        <b-input disabled value="Value tempat awal"></b-input>
                     </div>
                     <div class="input-group" >
-                        <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
-                        <b-input disabled placeholder="Value tempat akhir"></b-input>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fas fa-map-marker-alt color-blue"></i> </span>
+                        </div>
+                        <b-input disabled value="Value tempat akhir"></b-input>
                     </div>
                     <b-container class="bg-blue rounded text-white btn-space shadow-up">
                         <div class="d-flex justify-content-around">
@@ -28,3 +38,13 @@
             </b-card>               
     </b-card>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            phone: +6283876317976
+        }
+    }
+}
+</script>

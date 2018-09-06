@@ -52,7 +52,7 @@ export default {
     getRoute: function() {
         this.markers = []
         if(this.directionsDisplay) {
-          this.directionsDisplay.setMapOnAll(null)
+          this.directionsDisplay.setMap(null)
         }
         // Making directions
         this.directionsService = new google.maps.DirectionsService()

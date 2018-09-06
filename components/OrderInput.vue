@@ -3,11 +3,15 @@
         <h2 class="text-white content">Mau kemana sekarang?</h2>
         <form>
             <div class="input-group">
-                <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fas fa-map-marker-alt color-orange"></i> </span>
+                </div>
                 <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan titik penjemputan"> </GmapAutocomplete>
             </div> 
             <div class="input-group">
-                <i class="fas fa-map-marker-alt fa-2x form-control-feedback"></i>
+               <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fas fa-map-marker-alt color-blue"></i> </span>
+                </div>
                 <GmapAutocomplete @place_changed="endPoint" class="form-control"  placeholder="Tentukan titik tujuan"> </GmapAutocomplete>
             </div> 
             <b-container class="bg-blue rounded text-white btn-space shadow-up">
