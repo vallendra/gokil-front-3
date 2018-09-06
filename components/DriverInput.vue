@@ -1,17 +1,20 @@
 <template>
     <b-card class="shadow bg-grey text-white margin">
-        <h2 class="text-center mid-content">Siap Cari Duit?</h2>
+        <h2 class="text-center mid-content">Sudah Siap Cari Duit?</h2>
         <form>
+            <div>
+                Lokasi
+            </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> 
                         <i class="fas fa-map-marker-alt color-orange"></i> 
                     </span>
                 </div>
-                <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan titik mulai"> </GmapAutocomplete>
+                <GmapAutocomplete @place_changed="startPoint" class="form-control"  placeholder="Tentukan lokasimu"> </GmapAutocomplete>
             </div>
-            <div class="content">
-                <h4>Auto-Bid</h4>
+            <div class="">
+                <p>Auto-Bid</p>
                 <div class="row center-content">
                     <div>
                         <label class="switch" >
@@ -56,18 +59,18 @@ export default {
     },
     methods: {
         startPoint(place) {
-        console.log('startPoint dipanggil');
+            console.log('startPoint dipanggil');
             this.startPlace = place
             this.$store.commit('setStart', this.startPlace)
             this.$nuxt.$emit('ADD_START');
         },
         makeOrder: function() {
-        if (this.startPlace == null) {
-            alert("Isi dulu tujuan destinasinya ya :)") 
-        } else {
-            this.$store.commit('nextStep');
+            if (this.startPlace == null) {
+                alert("Isi dulu tujuan destinasinya ya :)") 
+            } else {
+                this.$store.commit('nextStep');
+            }
         }
-    }
     }
 }
 </script>
