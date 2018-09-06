@@ -1,6 +1,6 @@
 <template>
     <b-container fluid class="section bg-black">
-        <div class="col-sm-12 col-md-11 col-lg-11 mx-auto section">
+        <div class="col-sm-12 col-md-11 col-lg-11 mx-auto ">
             <div v-if="this.$store.state.orderStep == 1">
                 <driver-input />
             </div>
