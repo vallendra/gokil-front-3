@@ -26,9 +26,10 @@ module.exports = {
     }],
   ],
   axios: {
-    base: 'localhost',
-    port: 3000,
-    prefix: '/api'
+    // base: 'localhost',
+    // port: 3000,
+    // prefix: '/api'
+    baseURL:'https://gokil-backend-kyky1.herokuapp.com/api'
     },
   auth: {
     strategies: {
@@ -57,7 +58,6 @@ module.exports = {
     vendor: [
       'babel-polyfill',
       'vue2-google-maps'
-      // 'vue-js-toggle-button'
     ],
     /*
     ** Run ESLint on save
@@ -85,8 +85,7 @@ module.exports = {
     },
   },
   plugins: [
-    '~/plugins/vue2-google-maps',
-    // '~/plugins/vue-js-toggle-button'
+    '~/plugins/vue2-google-maps'
   ]
 }
 

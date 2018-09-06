@@ -9,6 +9,10 @@
             <div class="content">
                 <h4>Auto-Bid</h4>
                 <div class="row center-content">
+                    <label class="switch" >
+                        <input type="checkbox" v-model="bidValue" value="true">
+                        <span class="slider round"></span>
+                    </label>
                     <!-- <toggle-button :value="true" :labels="{checked: 'Foo', unchecked: 'Bar'}"/> -->
                     <!-- <label class="switch mid-content"> 
                         <input type="checkbox" checked>
@@ -19,12 +23,10 @@
                 <div >
                     <small> Menerima order otomatis</small>
                 </div>
-            </div>
-            
-
+            </div>         
         </form>
         <button @click="makeOrder" class="btn btn-lg btn-primary btn-block icon text-uppercase btn-space">PESAN</button>
-
+        {{bidValue}}
     </b-card>
 </template>
 
@@ -32,7 +34,8 @@
 export default {
     data(){
         return{
-            startPlace: null
+            startPlace: null,
+            bidValue: false
         }
     },
     methods: {
