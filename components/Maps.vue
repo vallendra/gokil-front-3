@@ -24,7 +24,7 @@ export default {
       center: {lat: 0, lng: 0},
       markers: [],
       places: [],
-      currentPlace: null
+      currentPlace: [],
     };
   },
   
@@ -35,6 +35,7 @@ export default {
     })
     this.$nuxt.$on('CHANGE_ROUTE', data => {
         this.getRoute();
+        this.getDistance();
     });
   },
 
@@ -71,6 +72,23 @@ export default {
             }
         })
         },
+    getDistance: function() {
+        this.distanceMatrixService = new google.maps.DistanceMatrixService();
+        var vm = this
+        vm.distanceMatrixService.getDistanceMatrix({
+            origins:  [new google.maps.LatLng(this.$store.state.startPoint.geometry.location.lat(),this.$store.state.startPoint.geometry.location.lng())],
+            destinations:  [new google.maps.LatLng(this.$store.state.endPoint.geometry.location.lat(),this.$store.state.endPoint.geometry.location.lng())],
+            travelMode: 'DRIVING'
+        }, function (response, status) {
+            if (status === 'OK') {
+              var distance = response.rows[0].elements[0].distance
+              this.$nuxt.$emit('GET_DISTANCE', distance)
+            distance = this.distance
+            } else {
+              console.log('Distance request failed due to ' + status)
+            }
+        })
+    },
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {

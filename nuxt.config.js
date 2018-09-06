@@ -20,6 +20,7 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    ['@nuxtjs/moment', ['id']],
     ['@nuxtjs/bootstrap-vue', { css: false }],
     ['nuxt-validate', {
       lang: 'id'
@@ -83,6 +84,9 @@ module.exports = {
       }
     },
   },
-  plugins: ['~/plugins/vue2-google-maps']
+  plugins: [
+    '~/plugins/vue2-google-maps',
+    { src: '~/plugins/currency', ssr: false }
+  ]
 }
 

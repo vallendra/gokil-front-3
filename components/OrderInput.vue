@@ -14,18 +14,20 @@
                 </div>
                 <GmapAutocomplete @place_changed="endPoint" class="form-control"  placeholder="Tentukan titik tujuan"> </GmapAutocomplete>
             </div> 
-            <b-container class="bg-blue rounded text-white btn-space shadow-up">
-                <div class="d-flex justify-content-around">
-                    <div>
-                        <div><h5>Harga</h5></div> 
-                        <div><h5>Rp. 174.000</h5></div>
-                    </div>
-                    <div>
-                        <div><h5>Jarak</h5></div>
-                        <div><h5>5.1 KM</h5></div>
-                    </div>
-                </div>
-            </b-container>                  
+            <transition name="slide-fade" mode="out-in">
+                <b-container class="bg-blue rounded text-white btn-space shadow-up"  v-if="this.currentDistance != null">
+                        <div class="d-flex justify-content-around" key="1">
+                            <div>
+                                <div><h5>Harga</h5></div> 
+                                <div><h5>{{this.currentFare | currency}}</h5></div>
+                            </div>
+                            <div>
+                                <div><h5>Jarak</h5></div>
+                                <div><h5>{{this.currentDistance.text}}</h5></div>
+                            </div>
+                        </div>
+                </b-container>   
+            </transition>               
         </form>
         <button class="btn btn-lg btn-primary btn-block icon text-uppercase btn-space" @click="makeOrder">PESAN</button>
     </b-card>
@@ -37,10 +39,15 @@ export default {
     return {
       startPlace: null,
       endPlace: null,
+      currentDistance: null,
+      currentFare: null
     }
   },
   mounted: function() {
       this.makeRoute();
+      this.$nuxt.$on('GET_DISTANCE', data => {
+        this.getDistance(data);
+        })
   },
   methods: {
     makeRoute: function() {
@@ -49,6 +56,10 @@ export default {
         } else {
             return
         }
+    },
+    getDistance: function(distance) {
+        this.currentDistance = distance
+        this.currentFare = 2500*distance.value/1000 //give the base km calculation here
     },
     startPoint(place) {
       this.startPlace = place
