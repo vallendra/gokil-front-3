@@ -28,9 +28,7 @@
             </b-container>                  
         </b-card>
         <div class="icon">
-            <b-progress :value="counter" :min="min" animated>
-                <div v-if="counter==0">{{countdown}}</div>
-            </b-progress>
+            <b-progress :value="counter" :min="min" animated></b-progress>
             <button class="btn btn-lg btn-primary btn-block  text-uppercase " @click="makeOrder">
                 pesan
             </button>
@@ -88,12 +86,7 @@ export default {
         
         
     },
-    computed: {
-        countdown() {
-            console.log("counternya 0")
-            return this.prevStep;
-        }  
-    }
+    
 }
 </script>
 
