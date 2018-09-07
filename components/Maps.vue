@@ -3,7 +3,7 @@
     <gmap-map
       ref="mapDashboard"
       :center="center"
-      :zoom="19"
+      :zoom="16"
       class="section"
       style="width:100%;  height:95vh;"
     >
@@ -24,23 +24,25 @@ export default {
       center: {lat: 0, lng: 0},
       markers: [],
       places: [],
-      currentPlace: null
+      currentPlace: [],
     };
   },
   
   mounted: function() {
     this.geolocate();
-    this.$nuxt.$on('ADD_START', data => {
-      this.addMarker();
+    this.$nuxt.$on('ADD_MARKER', data => {
+      this.addMarker(data);
     })
     this.$nuxt.$on('CHANGE_ROUTE', data => {
         this.getRoute();
+        this.getDistance();
     });
   },
 
    methods: {
-    addMarker: function(){
-        this.currentPlace = this.$store.state.startPoint
+    addMarker: function(point){
+        this.markers = []
+        this.currentPlace = point
         var marker = {
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng()
@@ -49,6 +51,7 @@ export default {
          this.center = marker;
     },
     getRoute: function() {
+        this.markers = []
         if(this.directionsDisplay) {
           this.directionsDisplay.setMap(null)
         }
@@ -69,6 +72,23 @@ export default {
             }
         })
         },
+    getDistance: function() {
+        this.distanceMatrixService = new google.maps.DistanceMatrixService();
+        var vm = this
+        vm.distanceMatrixService.getDistanceMatrix({
+            origins:  [new google.maps.LatLng(this.$store.state.startPoint.geometry.location.lat(),this.$store.state.startPoint.geometry.location.lng())],
+            destinations:  [new google.maps.LatLng(this.$store.state.endPoint.geometry.location.lat(),this.$store.state.endPoint.geometry.location.lng())],
+            travelMode: 'DRIVING'
+        }, function (response, status) {
+            if (status === 'OK') {
+              var distance = response.rows[0].elements[0].distance
+              this.$nuxt.$emit('GET_DISTANCE', distance)
+            distance = this.distance
+            } else {
+              console.log('Distance request failed due to ' + status)
+            }
+        })
+    },
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
@@ -81,4 +101,5 @@ export default {
   }
 }
 </script>
+
 
