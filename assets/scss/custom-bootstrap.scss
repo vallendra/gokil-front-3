@@ -6,7 +6,9 @@
 .page-enter, .page-leave-to {
   opacity: 0;
 }
-
+.cursor-pointer{
+  cursor: pointer;
+}
 .main-wrapper {
   height: 95vh;  
 }
@@ -142,6 +144,9 @@ nav {
 .color-orange{
   color: $orange!important;
 }
+.color-blue{
+  color: $blue!important;
+}
 .bg-black{
   background-color: $black!important;
 }
@@ -153,9 +158,15 @@ nav {
 .padding-top {
   padding-top: 5%;
 }
+.margin-top{
+  margin-top: 5%;
+}
 
 .content {
   padding: 5%;
+}
+.mini-content {
+  padding: 2%;
 }
 
 .margin{

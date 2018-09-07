@@ -12,7 +12,10 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.2.0/css/all.css'}
-    ]
+    ],
+    // script: [
+    //   { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDYmVDfcuFleFReyqgjqfb9BAyfDgTXrHg&callback=initMap' }
+    // ],
   },
   css: [
     '@/assets/scss/app.scss' // use our build, as entered via app.scss
