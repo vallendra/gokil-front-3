@@ -23,7 +23,7 @@
                 <small v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</small> 
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="inputPhone">Nomor Telepon</label>
                 <input name="phone" v-model="phone" v-validate="'required|numeric'" :class="{'input': true, 'is-invalid': errors.has('phone') }" type="numeric" placeholder="Masukkan nomor telepon" class="form-control" data-vv-as="Nomor Telepon">
                 <small v-show="errors.has('phone')" class="text-danger">{{ errors.first('phone') }}</small>   
@@ -33,7 +33,7 @@
                 <label for="inputPlateNumber">Plat Nomor Kendaraan</label>
                 <input name="plateNumber" v-model="plateNumber" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('plateNumber') }" type="text" placeholder="Masukkan plat nomor kendaraan" class="form-control" data-vv-as="Plat Nomor Kendaraan">
                 <small v-show="errors.has('plateNumber')" class="text-danger">{{ errors.first('plateNumber') }}</small>   
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="inputPassword">Password</label>
@@ -45,6 +45,10 @@
                 <label for="inputConfirmPassword">Konfirmasi password</label>
                 <input name="pw_confirm" v-validate="'required|confirmed:password'" type="password" placeholder="Masukkan password lagi" :class="{'input': true, 'is-invalid': errors.has('pw_confirm')}" class="form-control" data-vv-as="Konfirmasi password" >
                 <small v-show="errors.has('pw_confirm')" class="text-danger">{{ errors.first('pw_confirm') }}</small> 
+            </div>
+
+            <div class="form-group padding-top">
+                <button class="btn btn-lg btn-secondary icon text-uppercase" @click="prev">kembali</button>
             </div>
 
             <div class="form-group padding-top">
@@ -64,15 +68,19 @@ export default {
         return {
             username:null,
             name:null,
-            userTypeID: null,
+            userTypeID: "2",
             email:null,
             password:null,
-            phone:null,
-            plateNumber:null,
+            // phone:null,
+            // plateNumber:null,
             error:null
         }
     },
-    async register() {
+    methods:{
+        prev() {
+            this.$store.commit('prevFirstStep')
+        },
+        async register() {
             try {
                 await this.$axios.post('/users', {
                     user: {
@@ -81,25 +89,26 @@ export default {
                         email: this.email,
                         password: this.password,
                         userTypeID: this.userTypeID,
-                        phone: this.phone,
-                        plateNumber: this.plateNumber,
                     }
                     
                 })
                 this.$router.push('/login')
                 alert('Pendaftaran berhasil!')
                 } catch (e) {
+                    console.log("error nih bro")
                     this.error = e.response.data.message
                     alert(this.error)
                 }
         },
         validateBeforeSubmit() {
-	      this.$validator.validateAll().then((result) => {
-	        if (result) {
-	          this.register();
-	        }
-        });
-    },
+	        this.$validator.validateAll().then((result) => {
+                if (result) {
+                this.register();
+                }
+            });
+        },    
+    }
+    
 }
 </script>
 

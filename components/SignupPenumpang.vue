@@ -1,5 +1,6 @@
 <template>
-        <form id="register" method="post">
+    <transition name="fade" mode="out-in">
+        <form id="register" @submit.prevent="validateBeforeSubmit" method="post">
             <div>
                 <b-alert show danger v-show="error !=null">
                     {{error}}
@@ -7,7 +8,7 @@
 
                 <div class="form-group">
                     <label for="inputName">Nama Lengkap</label>
-                    <input name="name" v-model="name" v-validate="required" :class="{'input': true, 'is-invalid': errors.has('name') }" type="text" placeholder="Masukkan nama lengkap" class="form-control" data-vv-as="Nama">
+                    <input name="name" v-model="name" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('name') }" type="text" placeholder="Masukkan nama lengkap" class="form-control" data-vv-as="Nama">
                     <small v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</small>   
                 </div>
 
@@ -42,6 +43,10 @@
                 </div>
 
                 <div class="form-group padding-top">
+                    <button class="btn btn-lg btn-secondary icon text-uppercase" @click="prev">kembali</button>
+                </div>
+
+                <div class="form-group padding-top">
                     <button class="btn btn-lg btn-primary btn-block icon text-uppercase"  @click.prevent="validateBeforeSubmit()"  type="submit">DAFTAR</button>
                 </div>
 
@@ -50,6 +55,7 @@
                 </div>
             </div>
         </form>
+    </transition>
 </template>
 
 <script>
@@ -65,7 +71,11 @@ export default {
             error:null
         }
     },
-    async register() {
+    methods:{
+        prev() {
+            this.$store.commit('prevFirstStep')
+        },
+        async register() {
             try {
                 await this.$axios.post('/users', {
                     user: {
@@ -75,23 +85,26 @@ export default {
                         password: this.password,
                         userTypeID: this.userTypeID,
                         phone: this.phone,
+                        plateNumber: this.plateNumber,
                     }
                     
                 })
                 this.$router.push('/login')
                 alert('Pendaftaran berhasil!')
-                } catch (e) {
-                    this.error = e.response.data.message
-                    alert(this.error)
-                }
+                } 
+            catch (e) {
+                this.error = e.response.data.message
+                alert(this.error)
+            }
         },
         validateBeforeSubmit() {
-	      this.$validator.validateAll().then((result) => {
-	        if (result) {
-	          this.register();
-	        }
-        });
-    },
+	        this.$validator.validateAll().then((result) => {
+                if (result) {
+                this.register();
+                }
+            });
+        },    
+    }
 }
 </script>
 
