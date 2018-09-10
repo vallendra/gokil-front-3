@@ -23,7 +23,7 @@
                 <small v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</small> 
             </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="inputPhone">Nomor Telepon</label>
                 <input name="phone" v-model="phone" v-validate="'required|numeric'" :class="{'input': true, 'is-invalid': errors.has('phone') }" type="numeric" placeholder="Masukkan nomor telepon" class="form-control" data-vv-as="Nomor Telepon">
                 <small v-show="errors.has('phone')" class="text-danger">{{ errors.first('phone') }}</small>   
@@ -33,7 +33,7 @@
                 <label for="inputPlateNumber">Plat Nomor Kendaraan</label>
                 <input name="plateNumber" v-model="plateNumber" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('plateNumber') }" type="text" placeholder="Masukkan plat nomor kendaraan" class="form-control" data-vv-as="Plat Nomor Kendaraan">
                 <small v-show="errors.has('plateNumber')" class="text-danger">{{ errors.first('plateNumber') }}</small>   
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <label for="inputPassword">Password</label>
@@ -68,11 +68,11 @@ export default {
         return {
             username:null,
             name:null,
-            userTypeID: "2",
+            userTypeID: 2,
             email:null,
             password:null,
-            // phone:null,
-            // plateNumber:null,
+            phone:null,
+            plateNumber:null,
             error:null
         }
     },
@@ -89,6 +89,8 @@ export default {
                         email: this.email,
                         password: this.password,
                         userTypeID: this.userTypeID,
+                        phone: this.phone,
+                        plateNumber: this.plateNumber,
                     }
                     
                 })

@@ -40,10 +40,10 @@
                           <transition name="fade" mode="out-in">
                         <div>
                             <div v-if="!this.$store.state.firstStep && userTypeID=='2'">
-                                <signup-mitra/>
+                                <signup-driver/>
                             </div>             
                             <div v-if="!this.$store.state.firstStep && userTypeID=='1'">
-                                <signup-penumpang/>
+                                <signup-customer/>
                             </div>
                         </div>
                         </transition>
@@ -55,8 +55,8 @@
 
 <script>
 import NavbarMain from '~/components/NavbarMain'
-import SignupMitra from '~/components/SignupMitra'
-import SignupPenumpang from '~/components/SignupPenumpang';
+import SignupDriver from '~/components/SignupDriver'
+import SignupCustomer from '~/components/SignupCustomer';
 export default {
     data() {
         return {
@@ -66,8 +66,8 @@ export default {
       },
       components: {
           NavbarMain,
-          SignupMitra,
-          SignupPenumpang
+          SignupDriver,
+          SignupCustomer
       },
 	  methods: {
         prev() {
