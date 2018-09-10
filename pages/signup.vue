@@ -6,7 +6,6 @@
             <img class="icon" src="../assets/images/accident.png" height="75">
             <h2 class="thick">Naik motor sekarang makin enak</h2>
             <p>Silakan daftar aja dulu</p>
-            {{this.$store.state.firstStep+' ya'}}
         </div>
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card shadow">

@@ -47,12 +47,12 @@
                 <small v-show="errors.has('pw_confirm')" class="text-danger">{{ errors.first('pw_confirm') }}</small> 
             </div>
 
-            <div class="form-group padding-top">
-                <button class="btn btn-lg btn-secondary icon text-uppercase" @click="prev">kembali</button>
+            <div class="text-center">
+                <button class="btn btn-secondary " @click="prev">Kembali</button>
             </div>
 
-            <div class="form-group padding-top">
-                <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit">DAFTAR</button>
+            <div class="form-group ">
+                <button class="btn btn-lg btn-primary btn-block icon text-uppercase"  @click.prevent="validateBeforeSubmit()"  type="submit">DAFTAR</button>
             </div>
 
             <div class="text-center">
