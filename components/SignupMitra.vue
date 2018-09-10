@@ -1,6 +1,6 @@
 <template>
     <transition name="fade" mode="out-in">
-        <form @submit.prevent="validateBeforeSubmit">
+        <form id="register" @submit.prevent="validateBeforeSubmit" method="post">
             <b-alert show danger v-show="error !=null">
                 {{error}}
             </b-alert>
