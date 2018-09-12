@@ -30,6 +30,7 @@
             </transition>               
         </form>
         <button class="btn btn-lg btn-primary btn-block icon text-uppercase btn-space" @click="makeOrder">PESAN</button>
+     {{this.currentStartPlace}}
     </b-card>
 </template>
 
@@ -40,7 +41,10 @@ export default {
       startPlace: null,
       endPlace: null,
       currentDistance: null,
-      currentFare: null
+      currentFare: null,
+      currentStartPlace: {},
+      currentEndPlace: {}
+
     }
   },
   mounted: function() {
@@ -66,18 +70,41 @@ export default {
       this.$store.commit('setStart', this.startPlace)
       this.$nuxt.$emit('ADD_MARKER', this.startPlace)
       this.makeRoute()
+      this.currentStartPlace['formatted_address']=this.startPlace.formatted_address
+      this.currentStartPlace['geometry']=this.startPlace.geometry
     },
     endPoint(place) {
       this.endPlace = place
       this.$store.commit('setEnd', this.endPlace)
       this.$nuxt.$emit('ADD_MARKER', this.endPlace)
       this.makeRoute()
+      this.currentEndPlace['formatted_address']=this.endPlace.formatted_address
+      this.currentEndPlace['geometry']=this.endPlace.geometry
+
     },
+    async postOrder() {
+            try {
+                await this.$axios.post('/orders', {
+                    order: {
+                        fare: this.currentFare,
+                        start_location: this.currentStartPlace,
+                        end_location: this.currentEndPlace,
+                        status: 'pending'
+                    }
+                   
+                })
+                this.$store.commit('nextStep');
+                } catch (e) {
+                    this.error = e.response.data.message
+                    alert(this.error)
+                }
+                 
+        },
     makeOrder: function() {
         if (this.startPlace == null || this.endPlace == null) {
             alert("Isi dulu tujuan destinasinya ya :)") 
         } else {
-            this.$store.commit('nextStep');
+            this.postOrder();
         }
     }
     
