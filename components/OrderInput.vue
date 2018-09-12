@@ -30,7 +30,6 @@
             </transition>               
         </form>
         <button class="btn btn-lg btn-primary btn-block icon text-uppercase btn-space" @click="makeOrder">PESAN</button>
-     {{this.currentStartPlace}}
     </b-card>
 </template>
 
@@ -43,14 +42,18 @@ export default {
       currentDistance: null,
       currentFare: null,
       currentStartPlace: {},
-      currentEndPlace: {}
+      currentEndPlace: {},
+      currentOrderID: null
 
     }
   },
   mounted: function() {
       this.makeRoute();
       this.$nuxt.$on('GET_DISTANCE', data => {
-        this.getDistance(data);
+            this.getDistance(data);
+        })
+       this.$nuxt.$on('SET_CURRENT_ORDERID', data => {
+            this.$store.commit('setOrder', data)
         })
   },
   methods: {
@@ -91,9 +94,14 @@ export default {
                         end_location: this.currentEndPlace,
                         status: 'pending'
                     }
+                })
+                .then(function(response){
+                    console.log(response.data.id)
+                    $nuxt.$emit('SET_CURRENT_ORDERID', response.data.id)
                    
                 })
-                this.$store.commit('nextStep');
+                // console.log(this.$store.state.orderId)
+                this.$store.commit('nextStep')
                 } catch (e) {
                     this.error = e.response.data.message
                     alert(this.error)

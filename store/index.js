@@ -6,7 +6,8 @@ const createStore = () => {
       startPoint: null,
       endPoint:null,
       orderStep: 1,
-      firstStep: true
+      firstStep: true,
+      orderId: null
     },
     mutations: {
       nextStep (state) {
@@ -28,6 +29,13 @@ const createStore = () => {
       setEnd (state, place) {
         state.endPoint = null
         state.endPoint = place
+      },
+      setOrder (state, id){
+        state.orderId = null
+        state.orderId = id
+      },
+      resetOrder (state) {
+        state.orderId = null
       }
     }
   })
