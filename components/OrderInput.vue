@@ -42,8 +42,8 @@ export default {
       endPlace: null,
       currentDistance: null,
       currentFare: null,
-      currentStartPlace: [formatted_address = null, location = null],
-      currentEndPlace: [formatted_address = null, location = null]
+      currentStartPlace: [],
+      currentEndPlace: []
 
     }
   },
@@ -70,14 +70,14 @@ export default {
       this.$store.commit('setStart', this.startPlace)
       this.$nuxt.$emit('ADD_MARKER', this.startPlace)
       this.makeRoute()
-      this.currentStartPlace = [this.formatted_address = this.startPlace.formatted_address, this.location = this.startPlace.geometry.location]
+      this.currentStartPlace.push({formatted_address:this.startPlace.formatted_address},{location:this.startPlace.geometry.location})
     },
     endPoint(place) {
       this.endPlace = place
       this.$store.commit('setEnd', this.endPlace)
       this.$nuxt.$emit('ADD_MARKER', this.endPlace)
       this.makeRoute()
-      this.currentEndPlace = [formatted_address = this.endPlace.formatted_address, location = this.endPlace.geometry.location]
+      this.currentEndPlace.push({formatted_address:this.endPlace.formatted_address},{location:this.endPlace.geometry.location})
 
     },
     async postOrder() {
@@ -85,8 +85,8 @@ export default {
                 await this.$axios.post('/orders', {
                     order: {
                         fare: this.currentFare,
-                        start_location: this.startPlace.geometry.location(),
-                        end_location: this.endPlace.geometry.location(),
+                        start_location: this.currentStartPlace,
+                        end_location: this.currentEndPlace,
                         status: 'pending'
                     }
                    

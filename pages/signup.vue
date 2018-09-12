@@ -79,35 +79,6 @@ export default {
                 }
             });
         },
-<<<<<<< HEAD
-        async register() {
-            try {
-                await this.$axios.post('/users', {
-                    user: {
-                        // name: this.name,
-                        // username: this.username,
-                        email: this.email,
-                        password: this.password,
-                        // userTypeID: this.userTypeID,
-                    }
-                    
-                })
-                this.$router.push('/login')
-                alert('Pendaftaran berhasil!')
-                } catch (e) {
-                    this.error = e.response.data.message
-                    alert(this.error)
-                }
-        },
-        validateBeforeSubmit() {
-	      this.$validator.validateAll().then((result) => {
-	        if (result) {
-	          this.register();
-	        }
-	      });
-	    },
-=======
->>>>>>> b93d8b59caa1395e890734c8235e7702fb18b04a
 	    
       },
 };
