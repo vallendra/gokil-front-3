@@ -42,8 +42,8 @@ export default {
       endPlace: null,
       currentDistance: null,
       currentFare: null,
-      currentStartPlace: [],
-      currentEndPlace: []
+      currentStartPlace: {},
+      currentEndPlace: {}
 
     }
   },
@@ -70,14 +70,16 @@ export default {
       this.$store.commit('setStart', this.startPlace)
       this.$nuxt.$emit('ADD_MARKER', this.startPlace)
       this.makeRoute()
-      this.currentStartPlace.push({formatted_address:this.startPlace.formatted_address},{location:this.startPlace.geometry.location})
+      this.currentStartPlace['formatted_address']=this.startPlace.formatted_address
+      this.currentStartPlace['geometry']=this.startPlace.geometry
     },
     endPoint(place) {
       this.endPlace = place
       this.$store.commit('setEnd', this.endPlace)
       this.$nuxt.$emit('ADD_MARKER', this.endPlace)
       this.makeRoute()
-      this.currentEndPlace.push({formatted_address:this.endPlace.formatted_address},{location:this.endPlace.geometry.location})
+      this.currentEndPlace['formatted_address']=this.endPlace.formatted_address
+      this.currentEndPlace['geometry']=this.endPlace.geometry
 
     },
     async postOrder() {
