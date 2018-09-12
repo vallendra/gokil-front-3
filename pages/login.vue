@@ -8,31 +8,56 @@
             <p>Silakan masuk untuk mulai</p>
         </div>
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div v-if="$auth.$state.loggedIn">
             <div class="card shadow">
-                <div class="card-body">
-                  <div v-if="$auth.$state.loggedIn">
-                     <div class="text-center">Masuk sebagai <strong>{{$auth.$state.user.email}}</strong></div>
-                     <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="logout">KELUAR</button>
-                  </div>
-                  <div v-else>
-                    <b-alert show danger v-show="error !=null">
-                        {{error}}
-                    </b-alert>
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input name="email" type="text" v-model="email" class="form-control" placeholder="Masukkan email">
-                    </div>
-                    <div class="form-group">
-                       <label>Password</label>
-                      <input name="password" class="form-control"  v-model="password" placeholder="Masukkan password" type="password">
-                    </div>    
-                    <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="login">MASUK</button>
-                  </div>
+             <div class="card-body">
+               <div class="text-center">Masuk sebagai <strong>{{$auth.$state.user.email}}</strong></div>
+               <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="logout">KELUAR</button>
+             </div>
+            </div>
+          </div>
+          <div v-else>
+            <div class="">
+              <b-form-radio-group id="selectRole" 
+                                  buttons 
+                                  size="lg"
+                                  name="selectRole"
+                                  data-vv-as="Peran"
+                                  v-model="userTypeID" 
+                                  v-validate="'required'"
+                                  class=" control"
+                                  button-variant="primary"
+                                  >
+                <b-form-radio value="2" class="d-inline-block">
+                  Masuk Sebagai Driver
+                </b-form-radio>
+                <b-form-radio value="1" class="d-inline-block">
+                  Masuk Sebagai Customer
+                </b-form-radio>
+              </b-form-radio-group>
+            </div>
+            
+            <div class="card shadow">
+              <div class="card-body">
+                <b-alert show danger v-show="error !=null">
+                  {{error}}
+                </b-alert>
+            
+                <div class="form-label-group margin-top">
+                  <input name="email" type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address" required autofocus>
+                  <label for="inputEmail">Email address</label>
                 </div>
+                <div class="form-label-group">
+                  <input name="password" type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div> 
+                <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="login">MASUK</button>
+              </div>
             </div>
-            <div class="text-center info">
-              <a href="/signup"><small>Belum punya akun?</small></a>
-            </div>
+          </div>
+          <div class="text-center info">
+            <a href="/signup"><small>Belum punya akun?</small></a>
+          </div>
         </div>
     </div>
 </template>
@@ -44,6 +69,7 @@ export default {
     return {
       email: '',
       password: '',
+      userTypeID: '',
       error: null
     }
   },
