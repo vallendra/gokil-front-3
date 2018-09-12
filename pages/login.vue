@@ -60,7 +60,9 @@ export default {
           }
         }
       }).catch(e => {this.error = e + ''})
+      console.log('saya masuk')
     },
+
     logout: function () {
       this.$auth.logout().catch(e => {this.error = e + ''})
     }

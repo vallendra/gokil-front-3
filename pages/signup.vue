@@ -124,11 +124,11 @@ export default {
             try {
                 await this.$axios.post('/users', {
                     user: {
-                        name: this.name,
-                        username: this.username,
+                        // name: this.name,
+                        // username: this.username,
                         email: this.email,
                         password: this.password,
-                        userTypeID: this.userTypeID,
+                        // userTypeID: this.userTypeID,
                     }
                     
                 })
