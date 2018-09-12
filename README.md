@@ -32,7 +32,7 @@ $ npm install moment @nuxtjs/moment
 ```
 #### Backend
 
-See our back-end stack project at [GO-KIL Backend](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
+See our back-end stack project at [GO-KIL Backend](https://github.com/aldk98/go-kil-backend)
 
 
 License
