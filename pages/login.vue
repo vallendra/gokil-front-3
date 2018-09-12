@@ -40,8 +40,8 @@
                 </b-form-radio-group>
               </div> -->
               <div>
-                  <button id="button-customer" class="btn btn-lg btn-primary width-50" v-bind:class="{active:customerActive, btn}" @click="asCustomer">Masuk Sebagai Penumpang</button>
-                  <button id="button-driver" class="btn btn-lg btn-primary width-50" v-bind:class="{active:driverActive}" @click="asDriver">Masuk Sebagai Pengemudi</button>
+                  <button id="button-customer" class="btn btn-lg width-50" v-bind:class="{active:customerActive, primary:customerActive}" @click="asCustomer">Masuk Sebagai Penumpang</button>
+                  <button id="button-driver" class="btn btn-lg width-50" v-bind:class="{active:driverActive, primary:driverActive}" @click="asDriver">Masuk Sebagai Pengemudi</button>
               </div>
               <!-- <b-tabs>
                 <b-tab title="Masuk Sebagai Penumpang" class="primary">
@@ -85,7 +85,9 @@ export default {
       userTypeID: 1,
       error: null,
       customerActive: true,
-      driverActive:false
+      driverActive:false, 
+      customerType: 'primary',
+      driverType: 'secondary'
     }
   },
   components: {
