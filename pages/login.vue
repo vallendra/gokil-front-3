@@ -20,37 +20,10 @@
             
             
             <div class="card shadow">
-              <!-- <div class="">
-                <b-form-radio-group id="selectRole" 
-                                    buttons 
-                                    size="lg"
-                                    name="selectRole"
-                                    data-vv-as="Peran"
-                                    v-model="userTypeID" 
-                                    v-validate="'required'"
-                                    class="control"
-                                    button-variant="primary"
-                                    >
-                  <b-form-radio value="2" class="d-inline-block">
-                    Masuk Sini Sebagai Driver
-                  </b-form-radio>
-                  <b-form-radio value="1" class="d-inline-block">
-                    Masuk Sini Sebagai Customer
-                  </b-form-radio>
-                </b-form-radio-group>
-              </div> -->
               <div>
                   <button id="button-customer" class="btn btn-lg width-50" v-bind:class="{active:customerActive, primary:customerActive}" @click="asCustomer">Masuk Sebagai Penumpang</button>
                   <button id="button-driver" class="btn btn-lg width-50" v-bind:class="{active:driverActive, primary:driverActive}" @click="asDriver">Masuk Sebagai Pengemudi</button>
               </div>
-              <!-- <b-tabs>
-                <b-tab title="Masuk Sebagai Penumpang" class="primary">
-
-                </b-tab>
-                <b-tab title="Masuk Sebagai Driver" class="primary">
-                  
-                </b-tab>
-              </b-tabs> -->
               <div class="card-body">
                 <b-alert show danger v-show="error !=null">
                   {{error}}
