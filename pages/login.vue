@@ -17,26 +17,6 @@
             </div>
           </div>
           <div v-else>
-            <div class="">
-              <b-form-radio-group id="selectRole" 
-                                  buttons 
-                                  size="lg"
-                                  name="selectRole"
-                                  data-vv-as="Peran"
-                                  v-model="userTypeID" 
-                                  v-validate="'required'"
-                                  class=" control"
-                                  button-variant="primary"
-                                  >
-                <b-form-radio value="2" class="d-inline-block">
-                  Masuk Sebagai Driver
-                </b-form-radio>
-                <b-form-radio value="1" class="d-inline-block">
-                  Masuk Sebagai Customer
-                </b-form-radio>
-              </b-form-radio-group>
-            </div>
-            
             <div class="card shadow">
               <div class="card-body">
                 <b-alert show danger v-show="error !=null">
@@ -86,7 +66,9 @@ export default {
           }
         }
       }).catch(e => {this.error = e + ''})
+      console.log('saya masuk')
     },
+
     logout: function () {
       this.$auth.logout().catch(e => {this.error = e + ''})
     }

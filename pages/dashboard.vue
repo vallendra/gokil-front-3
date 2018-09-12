@@ -4,12 +4,12 @@
         <b-row no-gutters class="main-wrapper">
             <div class="col-lg-5 col-md-12 col-sm-12">
                 <!-- Validation on roles to show order option -->
-                <div class="section" v-if="$auth.$state.user.userTypeID == 1">
+                <div class="section" >
                     <order-customer />
                 </div>
-                <div class="section" v-if="$auth.$state.user.userTypeID == 2">
+                <!-- <div class="section" v-if="$auth.$state.user.userTypeID == 2">
                     <order-driver />
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-7 col-md-12 col-sm-12">
                 <maps ref="map" />
