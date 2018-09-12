@@ -10,10 +10,8 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card shadow">
                 <div class="card-body">
-                    <form id="register" @submit.prevent="validateBeforeSubmit" method="post">
-                    <transition name="fade" mode="out-in">
                         <!-- Step 1 -->
-                        <div v-if="firststep" class="text-center">
+                        <div v-if="this.$store.state.firstStep" class="text-center">
                             <h3 class="content"> Kamu mau jadi apa di GO-KIL? </h3>
                             <b-form-radio-group id="selectRole"
                                 buttons
@@ -38,6 +36,7 @@
                                 <button @click.prevent="next()" class="btn btn-lg btn-primary btn-block icon text-uppercase" :disabled="userTypeID == null" type="submit">LANJUT</button>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </transition>
 
                     <transition name="fade" mode="out-in">
@@ -86,10 +85,18 @@
                     
                         <div class="text-center">
                         <small>Dengan mendaftar berarti Anda menyetujui <a href="#">Syarat dan Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> kami.</small>
+=======
+                          <transition name="fade" mode="out-in">
+                        <div>
+                            <div v-if="!this.$store.state.firstStep && userTypeID=='2'">
+                                <signup-driver/>
+                            </div>             
+                            <div v-if="!this.$store.state.firstStep && userTypeID=='1'">
+                                <signup-customer/>
+                            </div>
+>>>>>>> 606bc2523c0b5de7ce13a2008630b148b2c50581
                         </div>
-                    </div>
-                    </transition>                   
-                    </form>
+                        </transition>
             </div>
             </div>
         </div>
@@ -98,58 +105,31 @@
 
 <script>
 import NavbarMain from '~/components/NavbarMain'
+import SignupDriver from '~/components/SignupDriver'
+import SignupCustomer from '~/components/SignupCustomer';
 export default {
     data() {
         return {
-            firststep: true,
-            username:null,
-            name:null,
             userTypeID: null,
-            email:null,
-            password:null,
             error:null
         }
       },
       components: {
-          NavbarMain
+          NavbarMain,
+          SignupDriver,
+          SignupCustomer
       },
 	  methods: {
         prev() {
-            this.firststep = true;
+            this.$store.commit('prevFirstStep')
         },
         next() {
             this.$validator.validateAll().then((result) => {
                 if (result) {
-                    this.firststep = false;
+                    this.$store.commit('nextFirstStep')
                 }
             });
         },
-        async register() {
-            try {
-                await this.$axios.post('/users', {
-                    user: {
-                        name: this.name,
-                        username: this.username,
-                        email: this.email,
-                        password: this.password,
-                        userTypeID: this.userTypeID,
-                    }
-                    
-                })
-                this.$router.push('/login')
-                alert('Pendaftaran berhasil!')
-                } catch (e) {
-                    this.error = e.response.data.message
-                    alert(this.error)
-                }
-        },
-        validateBeforeSubmit() {
-	      this.$validator.validateAll().then((result) => {
-	        if (result) {
-	          this.register();
-	        }
-	      });
-	    },
 	    
       },
 };

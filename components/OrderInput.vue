@@ -40,13 +40,20 @@ export default {
       startPlace: null,
       endPlace: null,
       currentDistance: null,
-      currentFare: null
+      currentFare: null,
+      currentStartPlace: {},
+      currentEndPlace: {},
+      currentOrderID: null
+
     }
   },
   mounted: function() {
       this.makeRoute();
       this.$nuxt.$on('GET_DISTANCE', data => {
-        this.getDistance(data);
+            this.getDistance(data);
+        })
+       this.$nuxt.$on('SET_CURRENT_ORDERID', data => {
+            this.$store.commit('setOrder', data)
         })
   },
   methods: {
@@ -66,18 +73,46 @@ export default {
       this.$store.commit('setStart', this.startPlace)
       this.$nuxt.$emit('ADD_MARKER', this.startPlace)
       this.makeRoute()
+      this.currentStartPlace['formatted_address']=this.startPlace.formatted_address
+      this.currentStartPlace['geometry']=this.startPlace.geometry
     },
     endPoint(place) {
       this.endPlace = place
       this.$store.commit('setEnd', this.endPlace)
       this.$nuxt.$emit('ADD_MARKER', this.endPlace)
       this.makeRoute()
+      this.currentEndPlace['formatted_address']=this.endPlace.formatted_address
+      this.currentEndPlace['geometry']=this.endPlace.geometry
+
     },
+    async postOrder() {
+            try {
+                await this.$axios.post('/orders', {
+                    order: {
+                        fare: this.currentFare,
+                        start_location: this.currentStartPlace,
+                        end_location: this.currentEndPlace,
+                        status: 'pending'
+                    }
+                })
+                .then(function(response){
+                    console.log(response.data.id)
+                    $nuxt.$emit('SET_CURRENT_ORDERID', response.data.id)
+                   
+                })
+                // console.log(this.$store.state.orderId)
+                this.$store.commit('nextStep')
+                } catch (e) {
+                    this.error = e.response.data.message
+                    alert(this.error)
+                }
+                 
+        },
     makeOrder: function() {
         if (this.startPlace == null || this.endPlace == null) {
             alert("Isi dulu tujuan destinasinya ya :)") 
         } else {
-            this.$store.commit('nextStep');
+            this.postOrder();
         }
     }
     

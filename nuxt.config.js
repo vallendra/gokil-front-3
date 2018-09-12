@@ -23,6 +23,7 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    ['@nuxtjs/moment', ['id']],
     ['@nuxtjs/bootstrap-vue', { css: false }],
     ['nuxt-validate', {
       lang: 'id'
@@ -38,6 +39,10 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
+          // login:  { url: '/customers/sign_in' },
+          // logout: { url: '/customers/sign_out', method: 'delete' },
+          // user:   { url: '/customers/current' }
+
           login:  { url: '/users/sign_in' },
           logout: { url: '/users/sign_out', method: 'delete' },
           user:   { url: '/users/current' }
@@ -88,7 +93,9 @@ module.exports = {
     },
   },
   plugins: [
-    '~/plugins/vue2-google-maps'
+    '~/plugins/vue2-google-maps',
+    { src: '~/plugins/localStorage.js', ssr: false },
+    { src: '~/plugins/currency', ssr: false }
   ]
 }
 

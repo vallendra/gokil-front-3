@@ -6,7 +6,23 @@
                 <h2>otw nyari..</h2>
             </div>
         </div>
-        <a href="#" class="info" @click="$store.commit('prevStep')"><small>Batalkan</small></a>
+        <a href="#" class="info" @click="cancelOrder"><small>Batalkan</small></a>
     </div>
 </template>
 
+<script>
+export default {
+    methods: {
+        async cancelOrder(response) {
+            try {
+                this.$axios.delete('/orders/'+this.$store.state.orderId)
+                this.$store.commit('prevStep');
+                this.$store.commit('resetOrder');
+            } catch (e) {
+       this.error = e.response.data.message
+                alert(this.error)
+            }
+        }
+    }
+}
+</script>
