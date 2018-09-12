@@ -12,7 +12,8 @@
             <div class="card shadow">
              <div class="card-body">
                <div class="text-center">Masuk sebagai <strong>{{$auth.$state.user.email}}</strong></div>
-               <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="logout">KELUAR</button>
+               <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="this.$router.push('/dashboard')">DASHBOARD</button>
+               <button class="btn btn-lg btn-secondary icon" @click="logout">KELUAR</button>
              </div>
             </div>
           </div>
@@ -24,11 +25,11 @@
                 </b-alert>
             
                 <div class="form-label-group margin-top">
-                  <input name="email" type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
+                  <input name="email" type="email" id="inputEmail" class="content form-control height-100" v-model="email" placeholder="Email address" required autofocus>
+                  <label for="inputEmail" class="content">Email address</label>
                 </div>
                 <div class="form-label-group">
-                  <input name="password" type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password" required>
+                  <input name="password" type="password" id="inputPassword" class="form-control height-100" v-model="password" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div> 
                 <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="login">MASUK</button>
@@ -49,8 +50,10 @@ export default {
     return {
       email: '',
       password: '',
-      userTypeID: '',
-      error: null
+      userTypeID: 1,
+      error: null,
+      customerActive: true,
+      driverActive:false
     }
   },
   components: {
