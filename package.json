@@ -26,7 +26,8 @@
     "nuxt-validate": "^0.1.1",
     "vue-axios": "^2.1.3",
     "vue-currency-filter": "^2.3.0",
-    "vue2-google-maps": "^0.10.2"
+    "vue2-google-maps": "^0.10.2",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.3",
