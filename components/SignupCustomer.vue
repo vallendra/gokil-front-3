@@ -64,7 +64,7 @@ export default {
         return {
             username:null,
             name:null,
-            userTypeID: null,
+            role: 'customer',
             email:null,
             password:null,
             phone:null,
@@ -83,9 +83,8 @@ export default {
                         username: this.username,
                         email: this.email,
                         password: this.password,
-                        userTypeID: this.userTypeID,
-                        phone: this.phone,
-                        plateNumber: this.plateNumber,
+                        role: this.role,
+                        phone: this.phone
                     }
                     
                 })

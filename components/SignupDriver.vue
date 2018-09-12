@@ -30,12 +30,6 @@
             </div>
 
             <div class="form-group">
-                <label for="inputPlateNumber">Plat Nomor Kendaraan</label>
-                <input name="plateNumber" v-model="plateNumber" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('plateNumber') }" type="text" placeholder="Masukkan plat nomor kendaraan" class="form-control" data-vv-as="Plat Nomor Kendaraan">
-                <small v-show="errors.has('plateNumber')" class="text-danger">{{ errors.first('plateNumber') }}</small>   
-            </div>
-
-            <div class="form-group">
                 <label for="inputPassword">Password</label>
                 <input name="password" ref="password" v-model="password" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('password')}" type="password" placeholder="Masukkan password" class="form-control" data-vv-as=" Password" >
                 <small v-show="errors.has('password')" class=" text-danger">{{ errors.first('password') }}</small> 
@@ -68,11 +62,10 @@ export default {
         return {
             username:null,
             name:null,
-            userTypeID: 2,
+            role: 'driver',
             email:null,
             password:null,
             phone:null,
-            plateNumber:null,
             error:null
         }
     },
@@ -88,9 +81,8 @@ export default {
                         username: this.username,
                         email: this.email,
                         password: this.password,
-                        userTypeID: this.userTypeID,
-                        phone: this.phone,
-                        plateNumber: this.plateNumber,
+                        role: this.role,
+                        phone: this.phone
                     }
                     
                 })
