@@ -17,38 +17,51 @@
             </div>
           </div>
           <div v-else>
-            <div class="">
-              <b-form-radio-group id="selectRole" 
-                                  buttons 
-                                  size="lg"
-                                  name="selectRole"
-                                  data-vv-as="Peran"
-                                  v-model="userTypeID" 
-                                  v-validate="'required'"
-                                  class=" control"
-                                  button-variant="primary"
-                                  >
-                <b-form-radio value="2" class="d-inline-block">
-                  Masuk Sebagai Driver
-                </b-form-radio>
-                <b-form-radio value="1" class="d-inline-block">
-                  Masuk Sebagai Customer
-                </b-form-radio>
-              </b-form-radio-group>
-            </div>
+            
             
             <div class="card shadow">
+              <!-- <div class="">
+                <b-form-radio-group id="selectRole" 
+                                    buttons 
+                                    size="lg"
+                                    name="selectRole"
+                                    data-vv-as="Peran"
+                                    v-model="userTypeID" 
+                                    v-validate="'required'"
+                                    class="control"
+                                    button-variant="primary"
+                                    >
+                  <b-form-radio value="2" class="d-inline-block">
+                    Masuk Sini Sebagai Driver
+                  </b-form-radio>
+                  <b-form-radio value="1" class="d-inline-block">
+                    Masuk Sini Sebagai Customer
+                  </b-form-radio>
+                </b-form-radio-group>
+              </div> -->
+              <div>
+                  <button id="button-customer" class="btn btn-lg btn-primary width-50" v-bind:class="{active:customerActive, btn}" @click="asCustomer">Masuk Sebagai Penumpang</button>
+                  <button id="button-driver" class="btn btn-lg btn-primary width-50" v-bind:class="{active:driverActive}" @click="asDriver">Masuk Sebagai Pengemudi</button>
+              </div>
+              <!-- <b-tabs>
+                <b-tab title="Masuk Sebagai Penumpang" class="primary">
+
+                </b-tab>
+                <b-tab title="Masuk Sebagai Driver" class="primary">
+                  
+                </b-tab>
+              </b-tabs> -->
               <div class="card-body">
                 <b-alert show danger v-show="error !=null">
                   {{error}}
                 </b-alert>
             
                 <div class="form-label-group margin-top">
-                  <input name="email" type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
+                  <input name="email" type="email" id="inputEmail" class="content form-control height-100" v-model="email" placeholder="Email address" required autofocus>
+                  <label for="inputEmail" class="content">Email address</label>
                 </div>
                 <div class="form-label-group">
-                  <input name="password" type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password" required>
+                  <input name="password" type="password" id="inputPassword" class="form-control height-100" v-model="password" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div> 
                 <button class="btn btn-lg btn-primary btn-block icon text-uppercase" type="submit" @click="login">MASUK</button>
@@ -69,8 +82,10 @@ export default {
     return {
       email: '',
       password: '',
-      userTypeID: '',
-      error: null
+      userTypeID: 1,
+      error: null,
+      customerActive: true,
+      driverActive:false
     }
   },
   components: {
@@ -78,6 +93,13 @@ export default {
   },
   methods: {
     login: function () {
+      if (this.userTypeID=='') {
+        alert("Pilih dulu sebagai penumpang atau pengemudi ya");
+      }else if (this.userTypeID=='1') {
+        alert("Anda telah masuk sebagai penumpang");
+      }else if (this.userTypeID=='2') {
+        alert("Anda telah masuk sebagai Pengemudi");
+      }
       this.$auth.login({
         data: {
           user: {
@@ -89,7 +111,17 @@ export default {
     },
     logout: function () {
       this.$auth.logout().catch(e => {this.error = e + ''})
-    }
+    },
+    asDriver: function(){
+      this.userTypeID= 2;
+      this.customerActive = false;
+      this.driverActive = true;
+    },
+    asCustomer: function(){
+      this.userTypeID= 1;
+      this.customerActive = true;
+      this.driverActive = false;
+    },
   }
 }
 </script>
