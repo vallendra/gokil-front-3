@@ -87,7 +87,7 @@ export default {
     },
     async postOrder() {
             try {
-                await this.$axios.post('/orders', {
+                await this.$axios.post('/users/customer/orders', {
                     order: {
                         fare: this.currentFare,
                         start_location: this.currentStartPlace,

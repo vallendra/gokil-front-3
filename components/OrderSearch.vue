@@ -15,7 +15,7 @@ export default {
     methods: {
         async cancelOrder(response) {
             try {
-                this.$axios.delete('/orders/'+this.$store.state.orderId)
+                this.$axios.delete('users/customer/orders/'+this.$store.state.orderId)
                 this.$store.commit('prevStep');
                 this.$store.commit('resetOrder');
             } catch (e) {
