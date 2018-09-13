@@ -13,9 +13,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input name="username" v-model="username" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('username') }" type="text" placeholder="Masukkan username" class="form-control" data-vv-as="Username">
-                    <small v-show="errors.has('username')" class="text-danger">{{ errors.first('username') }}</small>   
+                    <label for="inputAddress">Alamat</label>
+                    <input name="address" v-model="address" v-validate="'required'" :class="{'input': true, 'is-invalid': errors.has('address') }" type="text" placeholder="Masukkan alamat" class="form-control" data-vv-as="Alamat">
+                    <small v-show="errors.has('address')" class="text-danger">{{ errors.first('address') }}</small>   
                 </div>
 
                 <div class="form-group">
@@ -62,12 +62,12 @@
 export default {
     data() {
         return {
-            username:null,
             name:null,
             role: 'customer',
             email:null,
             password:null,
             phone:null,
+            address: null,
             error:null
         }
     },
@@ -84,7 +84,8 @@ export default {
                         email: this.email,
                         password: this.password,
                         role: this.role,
-                        phone: this.phone
+                        phone: this.phone,
+                        address: this.address
                     }
                     
                 })
