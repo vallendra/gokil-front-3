@@ -10,7 +10,6 @@
                 <div class="section" v-if="$auth.$state.user.role == 'driver'">
                     <order-driver />
                 </div>
-                {{$auth.$state.user}}
             </div>
             <div class="col-lg-7 col-md-12 col-sm-12">
                 <maps ref="map" />
