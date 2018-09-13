@@ -60,7 +60,6 @@
 export default {
     data() {
         return {
-            username:null,
             name:null,
             role: 'driver',
             email:null,
@@ -79,7 +78,6 @@ export default {
                 await this.$axios.post('/users', {
                     user: {
                         name: this.name,
-                        username: this.username,
                         email: this.email,
                         password: this.password,
                         role: this.role,
