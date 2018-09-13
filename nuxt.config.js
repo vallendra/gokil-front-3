@@ -90,7 +90,7 @@ module.exports = {
   },
   plugins: [
     '~/plugins/vue2-google-maps',
-    { src: '~/plugins/localStorage.js', ssr: false },
+    // { src: '~/plugins/localStorage.js', ssr: false },
     { src: '~/plugins/currency', ssr: false }
   ]
 }
