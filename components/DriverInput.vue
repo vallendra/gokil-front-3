@@ -63,12 +63,14 @@ export default {
             this.startPlace = place
             this.$store.commit('setStart', this.startPlace)
             this.$nuxt.$emit('ADD_START');
+            this.$nuxt.$emit('ADD_MARKER', this.startPlace);
         },
         makeOrder: function() {
             if (this.startPlace == null) {
                 alert("Isi dulu tujuan destinasinya ya :)") 
             } else {
                 this.$store.commit('nextStep');
+                // await this.$axios.get('')
             }
         }
     }
